@@ -143,7 +143,9 @@ def categorizar(qtd):
         return "Abastecido"
 estoque_total_unid["criticidade"] = estoque_total_unid["quantidade"].apply(categorizar)
 
-
+st.write("")
+st.write("Selecione uma unidade e/ou o nível de criticidade à esqueda da tela para conhecer as quantidades de cada produto por unidade de saúde")
+st.write("")
 
 
 
