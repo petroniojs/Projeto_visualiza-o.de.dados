@@ -46,7 +46,7 @@ st.title("Distribuição de Medicamentos por Unidade de Saúde")
 df = carregar_dados("medicamentos_por_unidade_de_saude.csv")
 
 # Sidebar
-st.sidebar.header("Filtros")
+st.sidebar.header("Medicamentos elegíveis a remanejamento")
 distritos = sorted(df['distrito'].dropna().unique())
 distrito_selecionado = st.sidebar.selectbox("Selecione um Distrito", distritos)
 
@@ -96,7 +96,10 @@ st.plotly_chart(fig_top10, use_container_width=True)
 # -----------------------------
 # Gráfico: Top 10 por Distrito
 # -----------------------------
-st.subheader("Medicamentos elegiveis em remanejamento de estoque")
+st.subheader("Medicamentos elegíveis ao remanejamento de estoque")
+st.write("Selecione um distrito à esqueda da tela para conhecer os 10 medicamentos em maior quantidade naquela região")
+st.write("")
+
 top3_df = (
     df_distrito.groupby('produto')['quantidade']
     .sum()
@@ -127,7 +130,7 @@ st.plotly_chart(fig_top3_distrito, use_container_width=True)
 # -----------------------------
 # Gráfico: Top 10 por Distrito
 # -----------------------------
-st.subheader("Criticidade de Medicamento por Unidade de Saude")
+st.subheader("Criticidade de medicamento por Unidade de Saúde")
 # Agrupar a quantidade total de medicamentos por distrito
 estoque_total_unid = df.groupby(["unidade","produto"])["quantidade"].sum().reset_index()
 # classificar os estoques
@@ -151,7 +154,7 @@ estoque_total_unid["criticidade"] = estoque_total_unid["quantidade"].apply(categ
 # -----------------------------
 
 # Sidebar - Filtros
-st.sidebar.subheader("Filtros")
+st.sidebar.subheader("Criticidade de Medicamento")
 
 # Unidade
 unidades = sorted(estoque_total_unid['unidade'].dropna().unique())
