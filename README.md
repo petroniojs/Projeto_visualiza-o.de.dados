@@ -1,2 +1,2 @@
-# Projeto_visualiza-o.de.dados
+# Projeto_visualizacao.de.dados
 Projeto final da disciplina e visualização de dados
